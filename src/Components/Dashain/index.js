@@ -26,6 +26,7 @@ const DashainCountdown = () => {
     const [year, setYear] = useState(new Date().getFullYear());
 
     const [loading, setLoading] = useState(true);
+    const [msgLoading, setMsgLoading] = useState(true);
 
 
     useEffect(() => {
@@ -40,6 +41,13 @@ const DashainCountdown = () => {
         const timer = setTimeout(() => {
             setLoading(false)
         }, 7000);
+        return () => clearTimeout(timer);
+    }, []);
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setMsgLoading(false)
+        }, 8000);
         return () => clearTimeout(timer);
     }, []);
 
@@ -80,6 +88,15 @@ const DashainCountdown = () => {
                             : <span>Dashain is here!!</span>
                     }
                 </div>
+                }
+            </p>
+            <p>
+                {msgLoading ? '' :
+                    <div className="greeting-msg">
+                    <ReactTypingEffect
+                        text={["विजय दशमी एवम दिपावली २०७८को हार्दिक मंङगलमय शुभकामना!!!", `Wish you a very Happy Dashain and Tihar!!!`]}
+                        />
+                    </div>
                 }
             </p>
         </div>

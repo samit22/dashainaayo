@@ -20,3 +20,10 @@
     font-size: 60px;
 }
 
+.greeting-msg{
+    color: #d31121;
+    margin-top: 10%;
+    font-size: 30px;
+    font-weight: 500;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
