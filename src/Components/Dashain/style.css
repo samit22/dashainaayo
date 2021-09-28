@@ -1,0 +1,22 @@
+.ct {
+  opacity: 1;
+  height: 100%;
+  text-align: center;
+  margin-top: 10%;
+}
+.heading{
+     font-size: 30px;
+}
+.center p {
+   line-height: 1.5;
+   display: inline-block;
+   vertical-align: middle;
+}
+.english-ct {
+    font-size: 25px;
+}
+.nepali-ct{
+    margin-top: 2%;
+    font-size: 60px;
+}
+
