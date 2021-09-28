@@ -3,6 +3,7 @@ import React, { useEffect, useState }  from 'react';
 import ReactTypingEffect from 'react-typing-effect';
 import { convertNepaliDigit } from '../../utils';
 import './style.css';
+import dhun from '../../music/dashain_dhun.mp3';
 
 const DashainCountdown = () => {
     const calculateTimeLeft = () => {
@@ -93,6 +94,7 @@ const DashainCountdown = () => {
             <p>
                 {msgLoading ? '' :
                     <div className="greeting-msg">
+                    <audio src={dhun} autoPlay />
                     <ReactTypingEffect
                         text={["विजय दशमी एवम दिपावली २०७८को हार्दिक मंङगलमय शुभकामना!!!", `Wish you a very Happy Dashain and Tihar!!!`]}
                         />
