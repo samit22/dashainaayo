@@ -1,6 +1,5 @@
 import  { useEffect, useState } from 'react';
 
-
 export const Countdown = (ctDate) => {
 
     const calculateTimeLeft = () => {
