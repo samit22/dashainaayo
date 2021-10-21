@@ -5,38 +5,16 @@ import { convertNepaliDigit } from '../../utils';
 import './style.css';
 import dhun from '../../music/dashain_dhun.mp3';
 
+import { Countdown  } from '../Countdown';
+
 const DashainCountdown = () => {
-    const calculateTimeLeft = () => {
-        let year = new Date().getFullYear();
-        const difference = +new Date(`10/12/${year}`) - +new Date();
-        let timeLeft = {};
-
-        if(difference > 0) {
-            timeLeft = {
-                days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-                hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-                minutes: Math.floor((difference / 1000 / 60) % 60),
-                seconds: Math.floor((difference / 1000) % 60)
-            };
-        }
-
-        return timeLeft;
-    };
-
-    const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
-    const [year, setYear] = useState(new Date().getFullYear());
+    let timeLeft = Countdown("2021-10-12");
+    let year = new Date().getFullYear();
 
     const [loading, setLoading] = useState(true);
     const [msgLoading, setMsgLoading] = useState(true);
 
 
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            setTimeLeft(calculateTimeLeft());
-            setYear(new Date().getFullYear());
-        }, 1000);
-        return () => clearTimeout(timer);
-    });
 
     useEffect(() => {
         const timer = setTimeout(() => {
