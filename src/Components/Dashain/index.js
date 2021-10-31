@@ -5,7 +5,11 @@ import { convertNepaliDigit } from '../../utils';
 import './style.css';
 import dhun from '../../music/dashain_dhun.mp3';
 
-import { Countdown  } from '../Countdown';
+import { Countdown } from '../Countdown';
+
+import PlayCircleOutlineRoundedIcon from '@mui/icons-material/PlayCircleOutlineRounded';
+import PauseCircleOutlineRoundedIcon from '@mui/icons-material/PauseCircleOutlineRounded';
+
 
 const DashainCountdown = () => {
     let timeLeft = Countdown("2021-10-12");
@@ -15,6 +19,29 @@ const DashainCountdown = () => {
     const [msgLoading, setMsgLoading] = useState(true);
 
 
+    const useAudio = url => {
+        const [audio] = useState(new Audio(url));
+        audio.volume = 0.2;
+        const [playing, setPlaying] = useState(false);
+
+        const toggle = () => setPlaying(!playing);
+
+        useEffect(() => {
+            playing ? audio.play() : audio.pause();
+        },
+            [playing]
+        );
+
+        useEffect(() => {
+            audio.addEventListener('ended', () => setPlaying(false));
+            return () => {
+                audio.removeEventListener('ended', () => setPlaying(false));
+            };
+        }, []);
+
+        return [playing, toggle];
+    };
+    const [playing, toggle] = useAudio(dhun);
 
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -26,7 +53,9 @@ const DashainCountdown = () => {
     useEffect(() => {
         const timer = setTimeout(() => {
             setMsgLoading(false)
+            toggle();
         }, 8000);
+
         return () => clearTimeout(timer);
     }, []);
 
@@ -72,7 +101,9 @@ const DashainCountdown = () => {
             <p>
                 {msgLoading ? '' :
                     <div className="greeting-msg">
-                    <audio src={dhun} autoPlay />
+                        <div className="play-pause">
+                            <button onLoadedData={toggle}  onClick={toggle}>{playing ? <PauseCircleOutlineRoundedIcon sx={{ fontSize: 50, color: 'info' }} /> : <PlayCircleOutlineRoundedIcon sx={{ fontSize: 50, color: 'info'}}/>}</button>
+                        </div>
                     <ReactTypingEffect
                         text={["विजय दशमी एवम दिपावली २०७८को हार्दिक मंङगलमय शुभकामना!!!", `Wish you a very Happy Dashain and Tihar!!!`]}
                         />
