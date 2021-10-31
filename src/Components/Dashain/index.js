@@ -1,6 +1,7 @@
 import React, { useEffect, useState }  from 'react';
-
 import ReactTypingEffect from 'react-typing-effect';
+import Container from '@mui/material/Container';
+
 import { convertNepaliDigit } from '../../utils';
 import './style.css';
 import dhun from '../../music/dashain_dhun.mp3';
@@ -73,6 +74,7 @@ const DashainCountdown = () => {
     });
 
     return (
+        <Container maxWidth="sm">
         <div className="ct">
             <p className="heading"> <h1>
                 <ReactTypingEffect
@@ -110,7 +112,8 @@ const DashainCountdown = () => {
                     </div>
                 }
             </p>
-        </div>
+            </div>
+        </Container>
     )
 
 }
