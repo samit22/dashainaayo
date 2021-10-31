@@ -27,3 +27,11 @@
     font-weight: 500;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
+
+.play-pause {
+    display:flex;
+    z-index: 4;
+    position:absolute;
+    top: 1.5%;
+    left: 1.5%;
+}
