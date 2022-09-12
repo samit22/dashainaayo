@@ -11,6 +11,7 @@ import { Countdown } from '../Countdown';
 import PlayCircleOutlineRoundedIcon from '@mui/icons-material/PlayCircleOutlineRounded';
 import PauseCircleOutlineRoundedIcon from '@mui/icons-material/PauseCircleOutlineRounded';
 
+import BottomAppBar from './footer'
 
 const DashainCountdown = () => {
     let timeLeft = Countdown("2022-10-02");
@@ -78,7 +79,7 @@ const DashainCountdown = () => {
         <div className="ct">
             <p className="heading"> <h1>
                 <ReactTypingEffect
-                text={["बडा दशैँ २०७८", `Dashain ${year}`]}
+                text={["बडा दशैँ २०७९", `Dashain ${year}`]}
                 />
             </h1>
             </p>
@@ -113,6 +114,7 @@ const DashainCountdown = () => {
                 }
             </p>
             </div>
+        <BottomAppBar/>
         </Container>
     )
 
