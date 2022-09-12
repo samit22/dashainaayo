@@ -108,7 +108,8 @@ const DashainCountdown = () => {
                             <button onLoadedData={toggle}  onClick={toggle}>{playing ? <PauseCircleOutlineRoundedIcon sx={{ fontSize: 50, color: 'info' }} /> : <PlayCircleOutlineRoundedIcon sx={{ fontSize: 50, color: 'info'}}/>}</button>
                         </div>
                     <ReactTypingEffect
-                        text={["विजय दशमी एवम दिपावली २०७९को हार्दिक मंङगलमय शुभकामना!!!", `Wish you a very Happy Dashain and Tihar!!!`]}
+
+                        text={["विजया दशमी एवम दिपावली २०७९को हार्दिक मंङगलमय शुभकामना!!!", `Wish you a very Happy Dashain and Tihar!!!`]}
                         />
                     </div>
                 }

@@ -5,11 +5,6 @@ import TwitterIcon from '@mui/icons-material/Twitter';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 
-
-
-
-
-
 export default function BottomAppBar() {
   return (
       <AppBar position="fixed" sx={{ top: 'auto', bottom: 0, background:"#eb4034" }}>
