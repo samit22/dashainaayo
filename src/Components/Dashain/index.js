@@ -78,7 +78,7 @@ const DashainCountdown = () => {
         <div className="ct">
             <p className="heading"> <h1>
                 <ReactTypingEffect
-                text={["बडा दशैँ २०७८", `Dashain ${year}`]}
+                text={["बडा दशैँ २०७९", `Dashain ${year}`]}
                 />
             </h1>
             </p>
