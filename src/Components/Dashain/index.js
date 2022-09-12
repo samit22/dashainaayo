@@ -13,7 +13,7 @@ import PauseCircleOutlineRoundedIcon from '@mui/icons-material/PauseCircleOutlin
 
 
 const DashainCountdown = () => {
-    let timeLeft = Countdown("2021-10-12");
+    let timeLeft = Countdown("2022-10-02");
     let year = new Date().getFullYear();
 
     const [loading, setLoading] = useState(true);
@@ -107,7 +107,7 @@ const DashainCountdown = () => {
                             <button onLoadedData={toggle}  onClick={toggle}>{playing ? <PauseCircleOutlineRoundedIcon sx={{ fontSize: 50, color: 'info' }} /> : <PlayCircleOutlineRoundedIcon sx={{ fontSize: 50, color: 'info'}}/>}</button>
                         </div>
                     <ReactTypingEffect
-                        text={["विजय दशमी एवम दिपावली २०७८को हार्दिक मंङगलमय शुभकामना!!!", `Wish you a very Happy Dashain and Tihar!!!`]}
+                        text={["विजय दशमी एवम दिपावली २०७९को हार्दिक मंङगलमय शुभकामना!!!", `Wish you a very Happy Dashain and Tihar!!!`]}
                         />
                     </div>
                 }
