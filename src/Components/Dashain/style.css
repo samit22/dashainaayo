@@ -35,3 +35,23 @@
     top: 1.5%;
     left: 1.5%;
 }
+.bg-image{
+}
+
+.bg-image::after {
+  content: "";
+  background: url(../../images/dashain-wp1.jpeg);
+  background-repeat:no-repeat;
+  -webkit-background-size:cover;
+  -moz-background-size:cover;
+  -o-background-size:cover;
+  background-size:cover;
+  background-position:center;
+  opacity: 0.4;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;
+}
