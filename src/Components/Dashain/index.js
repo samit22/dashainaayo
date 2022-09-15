@@ -1,6 +1,9 @@
 import React, { useEffect, useState }  from 'react';
 import ReactTypingEffect from 'react-typing-effect';
 import Container from '@mui/material/Container';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+
 
 import { convertNepaliDigit } from '../../utils';
 import './style.css';
@@ -75,8 +78,9 @@ const DashainCountdown = () => {
     });
 
     return (
-        <Container maxWidth="sm">
-        <div className="ct">
+        <Container maxWidth="sm" >
+        <Box className="bg-image">
+        <div className="ct" >
             <p className="heading"> <h1>
                 <ReactTypingEffect
                 text={["बडा दशैँ २०७९", `Dashain ${year}`]}
@@ -86,16 +90,23 @@ const DashainCountdown = () => {
             <p>
                 {loading ? '' : <div>
                     {
-                        timerComponents.length ? <div>
-                            <div className="english-ct">
+                        timerComponents.length ?
+                        (<div>
+                            <Typography sx={{
+                                fontSize: '25px'
+                            }}>
                                 {timerComponents}
-                            </div>
-                            <div className="nepali-ct">
+                            </Typography>
+                            <Box display={'flex'} sx={{
+                                fontSize: '60px',
+                                mt: '2%'
+                            }}>
                                 <span> {convertNepaliDigit(timeLeft.days)} दिन </span>
                                 <span>{convertNepaliDigit(timeLeft.hours)} घण्टा </span>
                                 <span> {convertNepaliDigit(timeLeft.minutes)} मिनेट </span>
                                 <span>{convertNepaliDigit(timeLeft.seconds)} सेकेन्ड </span>
-                            </div>  </div>
+                            </Box>
+                        </div>)
                             : <span>Dashain is here!!</span>
                     }
                 </div>
@@ -114,7 +125,8 @@ const DashainCountdown = () => {
                     </div>
                 }
             </p>
-            </div>
+                </div>
+                </Box>
         <BottomAppBar/>
         </Container>
     )
