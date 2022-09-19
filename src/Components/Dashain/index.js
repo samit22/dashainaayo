@@ -15,6 +15,7 @@ import PlayCircleOutlineRoundedIcon from '@mui/icons-material/PlayCircleOutlineR
 import PauseCircleOutlineRoundedIcon from '@mui/icons-material/PauseCircleOutlineRounded';
 
 import BottomAppBar from './footer'
+import KiteFlying from '../Kite';
 
 const DashainCountdown = () => {
     let timeLeft = Countdown("2022-10-02");
@@ -79,6 +80,7 @@ const DashainCountdown = () => {
     });
 
     return (
+        <><KiteFlying/>
         <Container maxWidth="sm" >
         <Box className="bg-image">
         <div className="ct" >
@@ -130,6 +132,7 @@ const DashainCountdown = () => {
                 </Box>
         <BottomAppBar/>
         </Container>
+        </>
     )
 
 }
