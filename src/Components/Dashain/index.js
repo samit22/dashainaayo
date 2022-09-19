@@ -80,7 +80,7 @@ const DashainCountdown = () => {
     });
 
     return (
-        <><KiteFlying/>
+    
         <Container maxWidth="sm" >
         <Box className="bg-image">
         <div className="ct" >
@@ -91,7 +91,8 @@ const DashainCountdown = () => {
             </h1>
             </p>
             <p>
-                {loading ? '' : <div>
+            {loading ? '' : <div>
+                            <KiteFlying/>
                     {
                         timerComponents.length ?
                         (<div>
@@ -132,7 +133,6 @@ const DashainCountdown = () => {
                 </Box>
         <BottomAppBar/>
         </Container>
-        </>
     )
 
 }
