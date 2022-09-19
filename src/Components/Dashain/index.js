@@ -27,6 +27,7 @@ const DashainCountdown = () => {
     const useAudio = url => {
         const [audio] = useState(new Audio(url));
         audio.volume = 0.2;
+        audio.loop = true;
         const [playing, setPlaying] = useState(false);
 
         const toggle = () => setPlaying(!playing);
@@ -98,7 +99,7 @@ const DashainCountdown = () => {
                                 {timerComponents}
                             </Typography>
                             <Box display={'flex'} sx={{
-                                fontSize: '60px',
+                                fontSize: '55px',
                                 mt: '2%'
                             }}>
                                 <span> {convertNepaliDigit(timeLeft.days)} दिन </span>
