@@ -14,8 +14,6 @@
 	margin: auto;
     z-index: -1;
 	animation: flying 5s ease-in-out infinite;
-	opacity: 80%;
-
 }
 .kite:before, .kite:after {
   content: '';
