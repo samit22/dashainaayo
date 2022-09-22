@@ -7,7 +7,7 @@
 	width: 100px;	height: 100px;
 	background: rgb(255, 0, 119);
 	transform: rotate(45deg);
-	top: 0;
+	top: "-20%";
 	left: 0;
 	bottom: 0;
 	right: 0;
@@ -48,7 +48,7 @@
 	top: 50%;
 	right: 60%;
 	width: 300px;
-	height: 800px;
+	height: 500px;
 	border-right: 2px solid #5b13d8;
 	border-radius: 5% 0 100% 5%;
 	transform-origin: top;
