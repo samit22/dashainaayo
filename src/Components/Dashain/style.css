@@ -38,14 +38,14 @@
 
 .bg-image::after {
   content: "";
-  background: url(../../images/dashain-wp1.jpeg);
+  background: url(../../images/dashain_f.jpg);
   background-repeat:no-repeat;
   -webkit-background-size:cover;
   -moz-background-size:cover;
   -o-background-size:cover;
   background-size:cover;
   background-position:center;
-  opacity: 0.4;
+  opacity: 0.5;
   top: 0;
   left: 0;
   bottom: 0;

@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { styled } from '@mui/material/styles';
 
 import ReactTypingEffect from 'react-typing-effect';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
+import Tooltip from '@mui/material/Tooltip';
+import Zoom from '@mui/material/Zoom';
 
 import { convertNepaliDigit } from '../../utils';
 import './style.css';
@@ -13,6 +15,7 @@ import dhun from '../../music/dashain_dhun.mp3';
 
 import { Countdown } from '../Countdown';
 
+import IconButton from '@mui/material/IconButton';
 import PlayCircleOutlineRoundedIcon from '@mui/icons-material/PlayCircleOutlineRounded';
 import PauseCircleOutlineRoundedIcon from '@mui/icons-material/PauseCircleOutlineRounded';
 
@@ -21,7 +24,6 @@ import KiteFlying from '../Kite';
 import DashainDetails from './importantDates';
 
 import { DashainDates, addHours } from '../../utils';
-import { fontSize } from '@mui/system';
 
 const NepaliCountdown = styled(Typography)(({ theme }) => ({
   padding: theme.spacing(1),
@@ -44,14 +46,34 @@ const DashainCountdown = () => {
 
   const useAudio = url => {
     const [audio] = useState(new Audio(url));
-    audio.volume = 0.2;
+    audio.autoplay = true;
+    audio.volume = 0.3;
     audio.loop = true;
     const [playing, setPlaying] = useState(false);
 
-    const toggle = () => setPlaying(!playing);
+    function toggle() {
+      setPlaying(!playing);
+    }
 
     useEffect(() => {
-      playing ? audio.play() : audio.pause();
+      if (playing) {
+        var playedPromise = audio.play();
+        if (playedPromise) {
+          playedPromise
+            .catch(e => {
+              console.log(e);
+              if (
+                e.name === 'NotAllowedError' ||
+                e.name === 'NotSupportedError'
+              ) {
+                toggle();
+              }
+            })
+            .then(() => {});
+        }
+      } else {
+        audio.pause();
+      }
     }, [playing]);
 
     useEffect(() => {
@@ -63,6 +85,7 @@ const DashainCountdown = () => {
 
     return [playing, toggle];
   };
+
   const [playing, toggle] = useAudio(dhun);
 
   useEffect(() => {
@@ -87,15 +110,13 @@ const DashainCountdown = () => {
       return;
     }
     timerComponents.push(
-      <span key={interval}>
-        {timeLeft[interval]} {interval}
-      </span>,
+      <span key={interval}>{`${timeLeft[interval]} ${interval} `}</span>,
     );
   });
 
   return (
     <Box
-      sx={{ flexGrow: 1, pt: '10%', pr: '2%', pl: '2%' }}
+      sx={{ flexGrow: 1, pt: '5%', pr: '2%', pl: '2%' }}
       className="bg-image"
     >
       <Grid container spacing={2}>
@@ -163,17 +184,50 @@ const DashainCountdown = () => {
           ) : (
             <div className="greeting-msg">
               <div className="play-pause">
-                <button onLoadedData={toggle} onClick={toggle}>
-                  {playing ? (
-                    <PauseCircleOutlineRoundedIcon
-                      sx={{ fontSize: 50, color: 'info' }}
-                    />
-                  ) : (
-                    <PlayCircleOutlineRoundedIcon
-                      sx={{ fontSize: 50, color: 'info' }}
-                    />
-                  )}
-                </button>
+                <Tooltip
+                  TransitionComponent={Zoom}
+                  open={!playing}
+                  arrow
+                  enterDelay={3000}
+                  title={
+                    <Typography
+                      fontSize={30}
+                      sx={{ backgroundColor: 'secondary' }}
+                    >
+                      Click me to Play!
+                    </Typography>
+                  }
+                  placement="bottom-end"
+                  sx={{
+                    fontSize: '20px',
+                  }}
+                >
+                  <IconButton
+                    aria-label="controller"
+                    size="large"
+                    color="success"
+                    sx={{
+                      height: '2em',
+                      width: '2em',
+                      fontSize: '40px',
+                    }}
+                    onClick={e => {
+                      toggle();
+                    }}
+                  >
+                    {playing ? (
+                      <PauseCircleOutlineRoundedIcon
+                        color="success"
+                        sx={{ fontSize: 100, color: 'succces' }}
+                      />
+                    ) : (
+                      <PlayCircleOutlineRoundedIcon
+                        color="error"
+                        sx={{ fontSize: 100, color: 'danger' }}
+                      />
+                    )}
+                  </IconButton>
+                </Tooltip>
               </div>
               <ReactTypingEffect
                 text={[
