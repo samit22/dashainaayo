@@ -1,11 +1,15 @@
 import './App.css';
-import DashainCountdown from './Components/Dashain';
+import Router from './Components/Router/route';
+import { BrowserRouter } from 'react-router-dom';
+
 
 function App() {
   return (
+    <BrowserRouter>
     <div className="App">
-      <DashainCountdown/>
+       <Router/>
     </div>
+    </BrowserRouter>
   );
 }
 

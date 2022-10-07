@@ -2,7 +2,7 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import { DataGrid } from '@mui/x-data-grid';
 
-import { DashainDates, findReadableTime, addHours } from '../../utils';
+import { TiharDates, findReadableTime, addHours } from '../../utils';
 
 const columns = [
   {
@@ -19,9 +19,9 @@ const columns = [
   },
 ];
 
-const DashainDetails = props => {
-  const startDate = DashainDates.start_date;
-  const rows = DashainDates.dates.map((d, i) => {
+const TiharDays = props => {
+  const startDate = TiharDates.start_date;
+  const rows = TiharDates.dates.map((d, i) => {
     const day = addHours(startDate, (d.day - 1) * 24);
     return {
       id: i + 1,
@@ -65,4 +65,4 @@ const DashainDetails = props => {
   );
 };
 
-export default DashainDetails;
+export default TiharDays;

@@ -1,0 +1,56 @@
+.ct {
+    text-align: center;
+    margin-top: 10%;
+  }
+  .heading{
+      font-size: xx-large;
+  }
+  .center p {
+     line-height: 1.5;
+     display: inline-block;
+     vertical-align: middle;
+  }
+  .english-ct {
+      font-size: 25px;
+  }
+  .nepali-ct{
+      margin-top: 2%;
+      font-size: 60px;
+  }
+  
+  .greeting-msg{
+      color: #d31121;
+      margin-top: 10%;
+      font-size: 30px;
+      font-weight: 500;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+  
+  .play-pause {
+      display:flex;
+      z-index: 4;
+      position:absolute;
+      top: 1.5%;
+      left: 1.5%;
+  }
+  .bg-image-tihar{
+  }
+  
+  .bg-image-tihar::after {
+    content: "";
+    background: url(../../images/tihar.jpg);
+    background-repeat:no-repeat;
+    -webkit-background-size:cover;
+    -moz-background-size:cover;
+    -o-background-size:cover;
+    background-size:cover;
+    background-position:center;
+    opacity: 0.5;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;
+  }
+  

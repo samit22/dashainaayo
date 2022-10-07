@@ -38,6 +38,7 @@ export const DashainDates = {
     { eng_label: 'Kojagrat Poornima', nep_label: 'कोजाग्रत पूर्णिमा', day: 14 },
   ],
 };
+
 export const findReadableTime = date => {
   // console.log(date);
   return moment(date).fromNow();
@@ -46,4 +47,17 @@ export const findReadableTime = date => {
 export const addHours = (date, hours) => {
   const added = moment(date).add(hours, 'hours').format('YYYY-MM-DD HH:mm:ss');
   return added;
+};
+
+export const TiharDates = {
+  start_date: '2022-10-23 00:00:00',
+  dates: [
+    { eng_label: 'Kaag Tihar', nep_label: 'काग तिहार', day: 1 },
+    { eng_label: 'Kukur Tihar', nep_label: 'कुकुर तिहार', day: 2 },
+    { eng_label: 'Laxmi Pooja', nep_label: 'लक्ष्मी पुजा', day: 2 },
+    { eng_label: 'Gaai Puja', nep_label: 'गाई पूजा', day: 3 },
+    { eng_label: 'Gobardan Puja', nep_label: 'गोवर्धन पूजा', day: 4 },
+    { eng_label: 'Mha Puja', nep_label: 'म्हपूजा', day: 4 },
+    { eng_label: 'Bhai Tika', nep_label: 'भाइटीका', day: 5 },
+  ],
 };
