@@ -11,7 +11,7 @@ import Zoom from '@mui/material/Zoom';
 import { convertNepaliDigit } from '../../utils';
 import './style.css';
 
-import dhun from '../../music/dashain_dhun.mp3';
+import dhun from '../../music/tihar_dhun.mp3';
 
 import { Countdown } from '../Countdown';
 
@@ -20,10 +20,11 @@ import PlayCircleOutlineRoundedIcon from '@mui/icons-material/PlayCircleOutlineR
 import PauseCircleOutlineRoundedIcon from '@mui/icons-material/PauseCircleOutlineRounded';
 
 import Footer from '../Footer/footer';
-import KiteFlying from '../Kite';
-import DashainDetails from './importantDates';
+// import KiteFlying from '../Kite';
+import TiharDays from './tiharDates';
 
-import { DashainDates, addHours } from '../../utils';
+import { TiharDates, addHours } from '../../utils';
+import Candle from './Candle';
 
 const NepaliCountdown = styled(Typography)(({ theme }) => ({
   padding: theme.spacing(1),
@@ -36,9 +37,10 @@ const datFS = {
   xs: '25px',
 };
 
-const DashainCountdown = () => {
-  const fulpati = addHours(DashainDates.start_date, 6 * 24);
-  let timeLeft = Countdown(fulpati);
+
+const TiharCountdown = () => {
+  const kaagTihar = addHours(TiharDates.start_date);
+  let timeLeft = Countdown(kaagTihar);
   let year = new Date().getFullYear();
 
   const [loading, setLoading] = useState(true);
@@ -117,8 +119,25 @@ const DashainCountdown = () => {
   return (
     <Box
       sx={{ flexGrow: 1, pt: '5%', pr: '2%', pl: '2%' }}
-      className="bg-image"
+      className="bg-image-tihar"
     >
+      {/* <Box
+      position={'absolute'}
+       sx={{
+        bottom:110,
+       }}
+      >
+        <Candle/>
+      </Box>
+      <Box
+      position={'absolute'}
+       sx={{
+        bottom:110,
+        left: 'calc(100% - 30px)'
+       }}
+      >
+        <Candle/>
+      </Box> */}
       <Grid container spacing={2}>
         <Grid item md={1} xs={12}></Grid>
         <Grid
@@ -137,13 +156,13 @@ const DashainCountdown = () => {
               fontWeight: 'bold',
             }}
           >
-            <ReactTypingEffect text={['बडा दशैँ २०७९', `Dashain ${year}`]} />
+            <ReactTypingEffect text={['तिहार २०७९', `Tihar ${year}`]} />
           </Typography>
           {loading ? (
             ''
           ) : (
             <>
-              <KiteFlying />
+              {/* <KiteFlying /> */}
               {timerComponents.length ? (
                 <>
                   <Typography
@@ -175,7 +194,7 @@ const DashainCountdown = () => {
                   </Box>
                 </>
               ) : (
-                <span>Dashain is here!!</span>
+                <span>Tihar is here!!</span>
               )}
             </>
           )}
@@ -231,8 +250,8 @@ const DashainCountdown = () => {
               </div>
               <ReactTypingEffect
                 text={[
-                  'विजया दशमी एवम दिपावली २०७९को हार्दिक मंङगलमय शुभकामना!!!',
-                  `Wish you a very Happy Dashain and Tihar!!!`,
+                  'शुभ दिपावलीको हार्दिक मंङगलमय शुभकामना!!!',
+                  `Happy Deepawali!!!`,
                 ]}
               />
             </div>
@@ -255,7 +274,7 @@ const DashainCountdown = () => {
               >
                 Important Dates
               </Typography>
-              <DashainDetails />
+              <TiharDays />
             </Box>
           )}
         </Grid>
@@ -265,4 +284,4 @@ const DashainCountdown = () => {
   );
 };
 
-export default DashainCountdown;
+export default TiharCountdown;
