@@ -137,7 +137,7 @@ const DashainCountdown = () => {
               fontWeight: 'bold',
             }}
           >
-            <ReactTypingEffect text={['बडा दशैँ २०७९', `Dashain ${year}`]} />
+            <ReactTypingEffect text={['बडा दशैँ २०८०', `Dashain ${year}`]} />
           </Typography>
           {loading ? (
             ''
@@ -231,7 +231,7 @@ const DashainCountdown = () => {
               </div>
               <ReactTypingEffect
                 text={[
-                  'विजया दशमी एवम दिपावली २०७९को हार्दिक मंङगलमय शुभकामना!!!',
+                  'विजया दशमी एवम दिपावली २०८०को हार्दिक मंङगलमय शुभकामना!!!',
                   `Wish you a very Happy Dashain and Tihar!!!`,
                 ]}
               />

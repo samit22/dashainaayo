@@ -10,7 +10,7 @@ export default function Router () {
         path="/"
         exact
         element={
-          <TiharCountdown
+          <DashainCountdown
           />
         }
       />
