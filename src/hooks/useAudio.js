@@ -1,38 +1,91 @@
-import { useCallback, useEffect, useState } from 'react'
+// import { useEffect, useState } from 'react';
+
+// export const useAudio = (url) => {
+//   const [audio] = useState(() => {
+//     const audioObj = new Audio(url);
+//     audioObj.autoplay = true;
+//     audioObj.volume = 0.3;
+//     audioObj.loop = true;
+//     return audioObj;
+//   });
+
+//   const [playing, setPlaying] = useState(false);
+
+//   const toggle = () => setPlaying((prevPlaying) => !prevPlaying);
+
+//   useEffect(() => {
+//     const playAudio = async () => {
+//       try {
+//         await audio.play();
+//       } catch (e) {
+//         console.error(e);
+//         if (e.name === 'NotAllowedError' || e.name === 'NotSupportedError') {
+//           toggle();
+//         }
+//       }
+//     };
+
+//     if (playing) {
+//       playAudio();
+//     } else {
+//       audio.pause();
+//     }
+//   }, [playing, audio]);
+
+//   useEffect(() => {
+//     const handleAudioEnded = () => setPlaying(false);
+//     audio.addEventListener('ended', handleAudioEnded);
+
+//     return () => {
+//       audio.removeEventListener('ended', handleAudioEnded);
+//     };
+//   }, [audio]);
+
+//   return [playing, toggle];
+// };
+
+import { useEffect, useState, useCallback } from 'react'
 
 export const useAudio = url => {
-  const [audio] = useState(new Audio(url))
-  audio.autoplay = true
-  audio.volume = 0.3
-  audio.loop = true
+  const [audio] = useState(() => {
+    const audioObj = new Audio(url)
+    audioObj.autoplay = true
+    audioObj.volume = 0.3
+    audioObj.loop = true
+    return audioObj
+  })
+
   const [playing, setPlaying] = useState(false)
 
   const toggle = useCallback(() => {
-    setPlaying(!playing)
-  }, [playing])
+    setPlaying(prevPlaying => !prevPlaying)
+  }, [])
 
   useEffect(() => {
-    if (playing) {
-      var playedPromise = audio.play()
-      if (playedPromise) {
-        playedPromise
-          .catch(e => {
-            console.log(e)
-            if (e.name === 'NotAllowedError' || e.name === 'NotSupportedError') {
-              toggle()
-            }
-          })
-          .then(() => {})
+    const playAudio = async () => {
+      try {
+        await audio.play()
+      } catch (e) {
+        console.error(e)
+        if (e.name === 'NotAllowedError' || e.name === 'NotSupportedError') {
+          toggle()
+        }
       }
+    }
+
+    if (playing) {
+      playAudio()
     } else {
       audio.pause()
     }
   }, [playing, audio, toggle])
 
   useEffect(() => {
-    audio.addEventListener('ended', () => setPlaying(false))
+    const handleAudioEnded = () => setPlaying(false)
+    audio.addEventListener('ended', handleAudioEnded)
+
     return () => {
-      audio.removeEventListener('ended', () => setPlaying(false))
+      audio.removeEventListener('ended', handleAudioEnded)
     }
   }, [audio])
 

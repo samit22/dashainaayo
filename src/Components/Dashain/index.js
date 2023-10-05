@@ -48,20 +48,20 @@ const DashainCountdown = () => {
   const [playing, toggle] = useAudio(dhun)
 
   useEffect(() => {
-    const timer = setTimeout(() => {
+    const loadingTimer = setTimeout(() => {
       setLoading(false)
     }, 7000)
-    return () => clearTimeout(timer)
-  }, [])
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
+    const msgLoadingTimer = setTimeout(() => {
       setMsgLoading(false)
       toggle()
     }, 8000)
 
-    return () => clearTimeout(timer)
-  }, [toggle])
+    return () => {
+      clearTimeout(loadingTimer)
+      clearTimeout(msgLoadingTimer)
+    }
+  }, [])
 
   const timerComponents = []
   Object.keys(timeLeft).forEach(interval => {

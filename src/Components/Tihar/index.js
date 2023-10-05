@@ -48,20 +48,20 @@ const TiharCountdown = () => {
   const [playing, toggle] = useAudio(dhun)
 
   useEffect(() => {
-    const timer = setTimeout(() => {
+    const loadingTimer = setTimeout(() => {
       setLoading(false)
     }, 7000)
-    return () => clearTimeout(timer)
-  }, [])
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
+    const msgLoadingTimer = setTimeout(() => {
       setMsgLoading(false)
       toggle()
     }, 8000)
 
-    return () => clearTimeout(timer)
-  }, [toggle])
+    return () => {
+      clearTimeout(loadingTimer)
+      clearTimeout(msgLoadingTimer)
+    }
+  }, [])
 
   const timerComponents = []
   Object.keys(timeLeft).forEach(interval => {
@@ -104,7 +104,7 @@ const TiharCountdown = () => {
                 textShadow: '0px 0px 8px rgba(255,65,185,1)',
               }}
             >
-              <ReactTypingEffect text={['तिहार २०७९', `Tihar ${year}`]} />
+              <ReactTypingEffect text={['तिहार २०८०', `Tihar ${year}`]} />
             </Typography>
             {loading ? (
               ''
