@@ -1,124 +1,78 @@
-import React, { useEffect, useState, useRef } from 'react';
-import { styled } from '@mui/material/styles';
+import React, { useEffect, useState } from 'react'
+import { styled } from '@mui/material/styles'
 
-import ReactTypingEffect from 'react-typing-effect';
-import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
-import Grid from '@mui/material/Grid';
-import Tooltip from '@mui/material/Tooltip';
-import Zoom from '@mui/material/Zoom';
+import ReactTypingEffect from 'react-typing-effect'
+import Box from '@mui/material/Box'
+import Typography from '@mui/material/Typography'
+import Grid from '@mui/material/Grid'
+import Tooltip from '@mui/material/Tooltip'
+import Zoom from '@mui/material/Zoom'
 
-import { convertNepaliDigit } from '../../utils';
-import './style.css';
+import { convertNepaliDigit } from '../../utils'
+import './style.css'
 
-import dhun from '../../music/dashain_dhun.mp3';
+import dhun from '../../music/dashain_dhun.mp3'
 
-import { Countdown } from '../Countdown';
+import { Countdown } from '../Countdown'
 
-import IconButton from '@mui/material/IconButton';
-import PlayCircleOutlineRoundedIcon from '@mui/icons-material/PlayCircleOutlineRounded';
-import PauseCircleOutlineRoundedIcon from '@mui/icons-material/PauseCircleOutlineRounded';
+import IconButton from '@mui/material/IconButton'
+import PlayCircleOutlineRoundedIcon from '@mui/icons-material/PlayCircleOutlineRounded'
+import PauseCircleOutlineRoundedIcon from '@mui/icons-material/PauseCircleOutlineRounded'
 
-import Footer from '../Footer/footer';
-import KiteFlying from '../Kite';
-import DashainDetails from './importantDates';
+import Footer from '../Footer/footer'
+import KiteFlying from '../Kite'
+import DashainDetails from './importantDates'
 
-import { DashainDates, addHours } from '../../utils';
+import { DashainDates, addHours } from '../../utils'
+import { useAudio } from '../../hooks/useAudio'
 
 const NepaliCountdown = styled(Typography)(({ theme }) => ({
   padding: theme.spacing(1),
   textAlign: 'center',
-}));
+}))
 
 const datFS = {
   md: '55px',
   sm: '30px',
   xs: '25px',
-};
+}
 
 const DashainCountdown = () => {
-  const fulpati = addHours(DashainDates.start_date, 6 * 24);
-  let timeLeft = Countdown(fulpati);
-  let year = new Date().getFullYear();
+  const fulpati = addHours(DashainDates.start_date, 6 * 24)
+  let timeLeft = Countdown(fulpati)
+  let year = new Date().getFullYear()
 
-  const [loading, setLoading] = useState(true);
-  const [msgLoading, setMsgLoading] = useState(true);
+  const [loading, setLoading] = useState(true)
+  const [msgLoading, setMsgLoading] = useState(true)
 
-  const useAudio = url => {
-    const [audio] = useState(new Audio(url));
-    audio.autoplay = true;
-    audio.volume = 0.3;
-    audio.loop = true;
-    const [playing, setPlaying] = useState(false);
-
-    function toggle() {
-      setPlaying(!playing);
-    }
-
-    useEffect(() => {
-      if (playing) {
-        var playedPromise = audio.play();
-        if (playedPromise) {
-          playedPromise
-            .catch(e => {
-              console.log(e);
-              if (
-                e.name === 'NotAllowedError' ||
-                e.name === 'NotSupportedError'
-              ) {
-                toggle();
-              }
-            })
-            .then(() => {});
-        }
-      } else {
-        audio.pause();
-      }
-    }, [playing]);
-
-    useEffect(() => {
-      audio.addEventListener('ended', () => setPlaying(false));
-      return () => {
-        audio.removeEventListener('ended', () => setPlaying(false));
-      };
-    }, []);
-
-    return [playing, toggle];
-  };
-
-  const [playing, toggle] = useAudio(dhun);
+  const [playing, toggle] = useAudio(dhun)
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      setLoading(false);
-    }, 7000);
-    return () => clearTimeout(timer);
-  }, []);
+      setLoading(false)
+    }, 7000)
+    return () => clearTimeout(timer)
+  }, [])
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      setMsgLoading(false);
-      toggle();
-    }, 8000);
+      setMsgLoading(false)
+      toggle()
+    }, 8000)
 
-    return () => clearTimeout(timer);
-  }, []);
+    return () => clearTimeout(timer)
+  }, [toggle])
 
-  const timerComponents = [];
+  const timerComponents = []
   Object.keys(timeLeft).forEach(interval => {
     if (!timeLeft[interval]) {
-      return;
+      return
     }
-    timerComponents.push(
-      <span key={interval}>{`${timeLeft[interval]} ${interval} `}</span>,
-    );
-  });
+    timerComponents.push(<span key={interval}>{`${timeLeft[interval]} ${interval} `}</span>)
+  })
 
   return (
-    <Box
-      sx={{ flexGrow: 1, pt: '5%', pr: '2%', pl: '2%' }}
-      className="bg-image"
-    >
+    <Box sx={{ flexGrow: 1, pt: '5%', pr: '2%', pl: '2%' }} className="bg-image">
       <Grid container spacing={2}>
         <Grid item md={1} xs={12}></Grid>
         <Grid
@@ -190,10 +144,7 @@ const DashainCountdown = () => {
                   arrow
                   enterDelay={3000}
                   title={
-                    <Typography
-                      fontSize={30}
-                      sx={{ backgroundColor: 'secondary' }}
-                    >
+                    <Typography fontSize={30} sx={{ backgroundColor: 'secondary' }}>
                       Click me to Play!
                     </Typography>
                   }
@@ -212,7 +163,7 @@ const DashainCountdown = () => {
                       fontSize: '40px',
                     }}
                     onClick={e => {
-                      toggle();
+                      toggle()
                     }}
                   >
                     {playing ? (
@@ -262,7 +213,7 @@ const DashainCountdown = () => {
       </Grid>
       <Footer />
     </Box>
-  );
-};
+  )
+}
 
-export default DashainCountdown;
+export default DashainCountdown
