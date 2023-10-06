@@ -1,120 +1,75 @@
-import React, { useEffect, useState, useRef } from 'react';
-import { styled } from '@mui/material/styles';
+import React, { useEffect, useState } from 'react'
+import { styled } from '@mui/material/styles'
 
-import ReactTypingEffect from 'react-typing-effect';
-import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
-import Grid from '@mui/material/Grid';
-import Tooltip from '@mui/material/Tooltip';
-import Zoom from '@mui/material/Zoom';
+import ReactTypingEffect from 'react-typing-effect'
+import Box from '@mui/material/Box'
+import Typography from '@mui/material/Typography'
+import Grid from '@mui/material/Grid'
+import Tooltip from '@mui/material/Tooltip'
+import Zoom from '@mui/material/Zoom'
 
-import { convertNepaliDigit } from '../../utils';
-import './style.css';
+import { convertNepaliDigit } from '../../utils'
+import './style.css'
 
-import dhun from '../../music/tihar_dhun.mp3';
+import dhun from '../../music/tihar_dhun.mp3'
 
-import { Countdown } from '../Countdown';
+import { Countdown } from '../Countdown'
 
-import IconButton from '@mui/material/IconButton';
-import PlayCircleOutlineRoundedIcon from '@mui/icons-material/PlayCircleOutlineRounded';
-import PauseCircleOutlineRoundedIcon from '@mui/icons-material/PauseCircleOutlineRounded';
+import IconButton from '@mui/material/IconButton'
+import PlayCircleOutlineRoundedIcon from '@mui/icons-material/PlayCircleOutlineRounded'
+import PauseCircleOutlineRoundedIcon from '@mui/icons-material/PauseCircleOutlineRounded'
 
-import Footer from '../Footer/footer';
-// import KiteFlying from '../Kite';
-import TiharDays from './tiharDates';
+import Footer from '../Footer/footer'
+import TiharDays from './tiharDates'
 
-import { TiharDates, addHours } from '../../utils';
-import Candle from './Candle';
-import Light from './Lights';
+import { TiharDates, addHours } from '../../utils'
+import Light from './Lights'
+import { useAudio } from '../../hooks/useAudio'
 
 const NepaliCountdown = styled(Typography)(({ theme }) => ({
   padding: theme.spacing(1),
   textAlign: 'center',
-}));
+}))
 
 const datFS = {
   md: '55px',
   sm: '30px',
   xs: '25px',
-};
+}
 
 const TiharCountdown = () => {
-  const kaagTihar = addHours(TiharDates.start_date);
-  let timeLeft = Countdown(kaagTihar);
-  let year = new Date().getFullYear();
+  const kaagTihar = addHours(TiharDates.start_date)
+  let timeLeft = Countdown(kaagTihar)
+  let year = new Date().getFullYear()
 
-  const [loading, setLoading] = useState(true);
-  const [msgLoading, setMsgLoading] = useState(true);
+  const [loading, setLoading] = useState(true)
+  const [msgLoading, setMsgLoading] = useState(true)
 
-  const useAudio = url => {
-    const [audio] = useState(new Audio(url));
-    audio.autoplay = true;
-    audio.volume = 0.3;
-    audio.loop = true;
-    const [playing, setPlaying] = useState(false);
+  const [playing, toggle] = useAudio(dhun)
 
-    function toggle() {
-      setPlaying(!playing);
+  useEffect(() => {
+    const loadingTimer = setTimeout(() => {
+      setLoading(false)
+    }, 7000)
+
+    const msgLoadingTimer = setTimeout(() => {
+      setMsgLoading(false)
+      toggle()
+    }, 8000)
+
+    return () => {
+      clearTimeout(loadingTimer)
+      clearTimeout(msgLoadingTimer)
     }
+  }, [])
 
-    useEffect(() => {
-      if (playing) {
-        var playedPromise = audio.play();
-        if (playedPromise) {
-          playedPromise
-            .catch(e => {
-              console.log(e);
-              if (
-                e.name === 'NotAllowedError' ||
-                e.name === 'NotSupportedError'
-              ) {
-                toggle();
-              }
-            })
-            .then(() => {});
-        }
-      } else {
-        audio.pause();
-      }
-    }, [playing]);
-
-    useEffect(() => {
-      audio.addEventListener('ended', () => setPlaying(false));
-      return () => {
-        audio.removeEventListener('ended', () => setPlaying(false));
-      };
-    }, []);
-
-    return [playing, toggle];
-  };
-
-  const [playing, toggle] = useAudio(dhun);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 7000);
-    return () => clearTimeout(timer);
-  }, []);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setMsgLoading(false);
-      toggle();
-    }, 8000);
-
-    return () => clearTimeout(timer);
-  }, []);
-
-  const timerComponents = [];
+  const timerComponents = []
   Object.keys(timeLeft).forEach(interval => {
     if (!timeLeft[interval]) {
-      return;
+      return
     }
-    timerComponents.push(
-      <span key={interval}>{`${timeLeft[interval]} ${interval} `}</span>,
-    );
-  });
+    timerComponents.push(<span key={interval}>{`${timeLeft[interval]} ${interval} `}</span>)
+  })
 
   return (
     <>
@@ -127,10 +82,7 @@ const TiharCountdown = () => {
       >
         <Light />
       </Box>
-      <Box
-        sx={{ flexGrow: 1, pt: '5%', pr: '2%', pl: '2%' }}
-        className="bg-image-tihar"
-      >
+      <Box sx={{ flexGrow: 1, pt: '5%', pr: '2%', pl: '2%' }} className="bg-image-tihar">
         <Grid container spacing={2}>
           <Grid item md={1} xs={12}></Grid>
           <Grid
@@ -152,7 +104,7 @@ const TiharCountdown = () => {
                 textShadow: '0px 0px 8px rgba(255,65,185,1)',
               }}
             >
-              <ReactTypingEffect text={['तिहार २०७९', `Tihar ${year}`]} />
+              <ReactTypingEffect text={['तिहार २०८०', `Tihar ${year}`]} />
             </Typography>
             {loading ? (
               ''
@@ -205,10 +157,7 @@ const TiharCountdown = () => {
                     arrow
                     enterDelay={3000}
                     title={
-                      <Typography
-                        fontSize={30}
-                        sx={{ backgroundColor: 'secondary' }}
-                      >
+                      <Typography fontSize={30} sx={{ backgroundColor: 'secondary' }}>
                         Click me to Play!
                       </Typography>
                     }
@@ -227,7 +176,7 @@ const TiharCountdown = () => {
                         fontSize: '40px',
                       }}
                       onClick={e => {
-                        toggle();
+                        toggle()
                       }}
                     >
                       {playing ? (
@@ -245,10 +194,7 @@ const TiharCountdown = () => {
                   </Tooltip>
                 </div>
                 <ReactTypingEffect
-                  text={[
-                    'शुभ दिपावलीको हार्दिक मंङगलमय शुभकामना!!!',
-                    `Happy Deepawali!!!`,
-                  ]}
+                  text={['शुभ दिपावलीको हार्दिक मंङगलमय शुभकामना!!!', `Happy Deepawali!!!`]}
                 />
               </div>
             )}
@@ -278,7 +224,7 @@ const TiharCountdown = () => {
         <Footer />
       </Box>
     </>
-  );
-};
+  )
+}
 
-export default TiharCountdown;
+export default TiharCountdown
