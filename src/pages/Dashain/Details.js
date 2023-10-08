@@ -1,8 +1,9 @@
-import * as React from 'react';
-import Box from '@mui/material/Box';
-import { DataGrid } from '@mui/x-data-grid';
+import * as React from 'react'
+import Box from '@mui/material/Box'
+import { DataGrid } from '@mui/x-data-grid'
 
-import { DashainDates, findReadableTime, addHours } from '../../utils';
+import { findReadableTime, addHours } from '../../utils'
+import { DashainDates } from '../../constants'
 
 const columns = [
   {
@@ -17,12 +18,12 @@ const columns = [
     headerName: 'In',
     width: 120,
   },
-];
+]
 
-const DashainDetails = props => {
-  const startDate = DashainDates.start_date;
+const DashainDetails = _ => {
+  const startDate = DashainDates.start_date
   const rows = DashainDates.dates.map((d, i) => {
-    const day = addHours(startDate, (d.day - 1) * 24);
+    const day = addHours(startDate, (d.day - 1) * 24)
     return {
       id: i + 1,
       day: d.day,
@@ -30,8 +31,8 @@ const DashainDetails = props => {
       eng_label: d.eng_label,
       label: `${d.nep_label}(${d.eng_label})`,
       in: `${findReadableTime(day)}`,
-    };
-  });
+    }
+  })
   return (
     <Box
       sx={{
@@ -56,13 +57,13 @@ const DashainDetails = props => {
         hideFooter
         hideFooterSelectedRowCount
         getRowClassName={params => {
-          const rd = params.id % 2 === 0 ? 'even' : 'odd';
-          return `super-app-theme--${rd}`;
+          const rd = params.id % 2 === 0 ? 'even' : 'odd'
+          return `super-app-theme--${rd}`
         }}
         headerHeight={0}
       />
     </Box>
-  );
-};
+  )
+}
 
-export default DashainDetails;
+export default DashainDetails

@@ -11,20 +11,20 @@ import Zoom from '@mui/material/Zoom'
 import { convertNepaliDigit } from '../../utils'
 import './style.css'
 
-import dhun from '../../music/tihar_dhun.mp3'
-
-import { Countdown } from '../Countdown'
-
 import IconButton from '@mui/material/IconButton'
 import PlayCircleOutlineRoundedIcon from '@mui/icons-material/PlayCircleOutlineRounded'
 import PauseCircleOutlineRoundedIcon from '@mui/icons-material/PauseCircleOutlineRounded'
 
-import Footer from '../Footer/footer'
-import TiharDays from './tiharDates'
+import TiharDays from './Details'
 
-import { TiharDates, addHours } from '../../utils'
+import { addHours } from '../../utils'
 import Light from './Lights'
 import { useAudio } from '../../hooks/useAudio'
+import { TiharDates } from '../../constants'
+
+import dhun from '../../music/tihar_dhun.mp3'
+import Footer from '../../components/Footer/footer'
+import { useCountdown } from '../../hooks/useCountdown'
 
 const NepaliCountdown = styled(Typography)(({ theme }) => ({
   padding: theme.spacing(1),
@@ -39,7 +39,7 @@ const datFS = {
 
 const TiharCountdown = () => {
   const kaagTihar = addHours(TiharDates.start_date)
-  let timeLeft = Countdown(kaagTihar)
+  let timeLeft = useCountdown(kaagTihar)
   let year = new Date().getFullYear()
 
   const [loading, setLoading] = useState(true)

@@ -1,6 +1,6 @@
-import React from 'react';
+import React from 'react'
 
-import './kite.css';
+import './kite.css'
 
 const KiteFlying = () => {
   return (
@@ -8,7 +8,7 @@ const KiteFlying = () => {
       <div className="tail"></div>
       <div className="string"></div>
     </div>
-  );
-};
+  )
+}
 
-export default KiteFlying;
+export default KiteFlying

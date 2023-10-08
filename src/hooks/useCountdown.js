@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 
-export const Countdown = ctDate => {
+export const useCountdown = (ctDate) => {
   const calculateTimeLeft = () => {
-    let until = new Date(ctDate);
+    const until = new Date(ctDate);
     const difference = +until - +new Date();
     let timeLeft = {};
 
@@ -10,7 +10,7 @@ export const Countdown = ctDate => {
       timeLeft = {
         days: Math.floor(difference / (1000 * 60 * 60 * 24)),
         hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-        minutes: Math.floor((difference / 1000 / 60) % 60),
+        minutes: Math.floor((difference / (1000 * 60)) % 60),
         seconds: Math.floor((difference / 1000) % 60),
       };
     }
@@ -21,10 +21,13 @@ export const Countdown = ctDate => {
   const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
 
   useEffect(() => {
-    const timer = setTimeout(() => {
+    const intervalId = setInterval(() => {
       setTimeLeft(calculateTimeLeft());
     }, 1000);
-    return () => clearTimeout(timer);
-  });
+
+    //@ts-ignore
+    return () => clearInterval(intervalId); // Clear the interval on unmount
+  }, [ctDate]);
+
   return timeLeft;
 };
