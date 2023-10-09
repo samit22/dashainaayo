@@ -1,22 +1,24 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 
 export const useCountdown = (ctDate) => {
-  const calculateTimeLeft = () => {
-    const until = new Date(ctDate);
-    const difference = +until - +new Date();
-    let timeLeft = {};
+  const calculateTimeLeft = useMemo(() => {
+    return () => {
+      const until = new Date(ctDate);
+      const difference = +until - +new Date();
+      let timeLeft = {};
 
-    if (difference > 0) {
-      timeLeft = {
-        days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-        hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-        minutes: Math.floor((difference / (1000 * 60)) % 60),
-        seconds: Math.floor((difference / 1000) % 60),
-      };
-    }
+      if (difference > 0) {
+        timeLeft = {
+          days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+          hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+          minutes: Math.floor((difference / (1000 * 60)) % 60),
+          seconds: Math.floor((difference / 1000) % 60),
+        };
+      }
 
-    return timeLeft;
-  };
+      return timeLeft;
+    };
+  }, [ctDate]);
 
   const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
 
@@ -25,9 +27,9 @@ export const useCountdown = (ctDate) => {
       setTimeLeft(calculateTimeLeft());
     }, 1000);
 
-    //@ts-ignore
-    return () => clearInterval(intervalId); // Clear the interval on unmount
-  }, [ctDate]);
+    // Clear the interval on unmount
+    return () => clearInterval(intervalId);
+  }, [ctDate, calculateTimeLeft]);
 
   return timeLeft;
 };
