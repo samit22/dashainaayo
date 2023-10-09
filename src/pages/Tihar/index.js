@@ -6,7 +6,7 @@ import Box from '@mui/material/Box'
 import Grid from '@mui/material/Grid'
 
 import Light from '../../components/Lights'
-import Footer from '../../components/Footer/footer'
+import Footer from '../../components/Footer'
 import ImportantDates from '../../components/ImportantDates'
 import CountDown from '../../components/CountDown'
 import Header from '../../components/Header'

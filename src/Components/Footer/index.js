@@ -1,16 +1,13 @@
-import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import TwitterIcon from '@mui/icons-material/Twitter';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
+import * as React from 'react'
+import AppBar from '@mui/material/AppBar'
+import Box from '@mui/material/Box'
+import TwitterIcon from '@mui/icons-material/Twitter'
+import Toolbar from '@mui/material/Toolbar'
+import IconButton from '@mui/material/IconButton'
 
 export default function Footer() {
   return (
-    <AppBar
-      position="fixed"
-      sx={{ top: 'auto', bottom: 0, background: '#e59c96' }}
-    >
+    <AppBar position="fixed" sx={{ top: 'auto', bottom: 0, background: '#e59c96' }}>
       <Toolbar>
         <Box
           sx={{
@@ -32,5 +29,5 @@ export default function Footer() {
         </IconButton>
       </Toolbar>
     </AppBar>
-  );
+  )
 }
