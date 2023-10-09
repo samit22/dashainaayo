@@ -5,12 +5,12 @@ import ReactTypingEffect from 'react-typing-effect'
 import Box from '@mui/material/Box'
 import Grid from '@mui/material/Grid'
 
-import Light from '../../components/Lights'
 import ImportantDates from '../../components/ImportantDates'
 import CountDown from '../../components/CountDown'
 import Header from '../../components/Header'
 import Player from '../../components/Player'
 import Footer from '../../components/Footer'
+import Lights from '../../components/Lights'
 
 import './style.css'
 
@@ -42,7 +42,7 @@ const Tihar = () => {
           overflow: 'hidden',
         }}
       >
-        <Light />
+        <Lights />
       </Box>
       <Box sx={{ flexGrow: 1, pt: '5%', pr: '2%', pl: '2%' }} className="bg-image-tihar">
         <Grid container spacing={2}>

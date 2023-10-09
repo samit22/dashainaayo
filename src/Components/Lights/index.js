@@ -1,8 +1,8 @@
-import React from 'react';
+import React from 'react'
 
-import './index.css';
+import './index.css'
 
-const Light = () => {
+const Lights = () => {
   return (
     <ul className="wire">
       <li></li>
@@ -39,7 +39,7 @@ const Light = () => {
       <li></li>
       <li></li>
     </ul>
-  );
-};
+  )
+}
 
-export default Light;
+export default Lights
