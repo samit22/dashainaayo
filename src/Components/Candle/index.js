@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './candle.scss'
+import './index.scss'
 
 const Candle = () =>{
 

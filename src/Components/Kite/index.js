@@ -1,6 +1,6 @@
 import React from 'react'
 
-import './kite.css'
+import './index.css'
 
 const KiteFlying = () => {
   return (

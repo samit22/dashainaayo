@@ -5,7 +5,7 @@ import ReactTypingEffect from 'react-typing-effect'
 import Box from '@mui/material/Box'
 import Grid from '@mui/material/Grid'
 
-import Light from './Lights'
+import Light from '../../components/Lights'
 import Footer from '../../components/Footer/footer'
 import ImportantDates from '../../components/ImportantDates'
 import CountDown from '../../components/CountDown'

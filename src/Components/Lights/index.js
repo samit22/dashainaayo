@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './lights.css';
+import './index.css';
 
 const Light = () => {
   return (
