@@ -1,14 +1,14 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
-import DashainCountdown from '../pages/Dashain'
-import TiharCountdown from '../pages/Tihar'
+import Dashain from '../components/Dashain'
+import Tihar from '../components/Tihar'
 
 export default function Router() {
   return (
     <Routes>
-      <Route path="/" exact element={<DashainCountdown />} />
-      <Route path="/dashain" exact element={<DashainCountdown />} />
-      <Route path="/tihar" exact element={<TiharCountdown />} />
+      <Route path="/" exact element={<Dashain />} />
+      <Route path="/dashain" exact element={<Dashain />} />
+      <Route path="/tihar" exact element={<Tihar />} />
     </Routes>
   )
 }
