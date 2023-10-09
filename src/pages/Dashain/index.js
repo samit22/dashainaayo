@@ -4,12 +4,12 @@ import ReactTypingEffect from 'react-typing-effect'
 import Box from '@mui/material/Box'
 import Grid from '@mui/material/Grid'
 
-import Kite from '../Kite'
-import Footer from '../Footer'
-import Header from '../Header'
-import CountDown from '../CountDown'
-import Player from '../Player'
-import ImportantDates from '../ImportantDates'
+import Kite from '../../Components/Kite'
+import Footer from '../../Components/Footer'
+import Header from '../../Components/Header'
+import CountDown from '../../Components/CountDown'
+import Player from '../../Components/Player'
+import ImportantDates from '../../Components/ImportantDates'
 
 import './style.css'
 

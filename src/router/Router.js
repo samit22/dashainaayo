@@ -1,7 +1,7 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
-import Dashain from '../components/Dashain'
-import Tihar from '../components/Tihar'
+import Dashain from '../pages/Dashain'
+import Tihar from '../pages/Tihar'
 
 export default function Router() {
   return (
