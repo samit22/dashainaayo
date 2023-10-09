@@ -1,0 +1,7 @@
+.play-pause {
+    display:flex;
+    z-index: 4;
+    position:absolute;
+    top: 1.5%;
+    left: 1.5%;
+}

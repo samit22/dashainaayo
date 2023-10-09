@@ -33,8 +33,6 @@
       top: 1.5%;
       left: 1.5%;
   }
-  .bg-image-tihar{
-  }
   
   .bg-image-tihar::after {
     content: "";
