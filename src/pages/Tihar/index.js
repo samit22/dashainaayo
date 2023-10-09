@@ -6,11 +6,11 @@ import Box from '@mui/material/Box'
 import Grid from '@mui/material/Grid'
 
 import Light from '../../components/Lights'
-import Footer from '../../components/Footer'
 import ImportantDates from '../../components/ImportantDates'
 import CountDown from '../../components/CountDown'
 import Header from '../../components/Header'
 import Player from '../../components/Player'
+import Footer from '../../components/Footer'
 
 import './style.css'
 
