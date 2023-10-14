@@ -1,16 +1,20 @@
-# dashainaayo
-Dashain Aayo
+# Dashain Aayo
 
+This page has countdown for two biggest Nepalese festival
 
-Simple page for the countdown of [Dashain](https://en.wikipedia.org/wiki/Dashain). Dashain is the biggest festail of Nepalese, celebrated every year for 15 days.
+1. [Dashain](https://en.wikipedia.org/wiki/Dashain) is the biggest festival of Nepalese, celebrated every year for 15 days.
+2. [Tihar](<https://en.wikipedia.org/wiki/Tihar_(festival)>) is festival of light, celebrated for 5 days.
 
-### Start server
+### Running Locally
 
-## Clone the repo
+#### Requirements:
 
-```
-npm i
+- Node: 18+
 
-npm run 
+Clone the repo and
 
+```bash
+npm install
+
+npm run start
 ```
