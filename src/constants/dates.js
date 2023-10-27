@@ -1,5 +1,6 @@
 export const TiharDates = {
     start_date: '2023-11-11 00:00:00',
+    end_date: '2023-11-16 00:00:00',
     dates: [
       { eng_label: 'Kaag Tihar', nep_label: 'काग तिहार', day: 1 },
       { eng_label: 'Kukur Tihar', nep_label: 'कुकुर तिहार', day: 2 },
@@ -13,6 +14,7 @@ export const TiharDates = {
 
   export const DashainDates = {
     start_date: '2023-10-15 00:00:00',
+    end_date: '2023-10-28 00:00:00',
     dates: [
       { eng_label: 'Ghatasthapana', nep_label: 'घटस्थापना', day: 1 },
       { eng_label: 'Fulpati', nep_label: 'फूलपाती', day: 7 },
