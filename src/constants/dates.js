@@ -1,5 +1,6 @@
 export const TiharDates = {
   start_date: '2023-11-11 00:00:00',
+  end_date: '2023-11-16 00:00:00',
   dates: [
     { eng_label: 'Kaag Tihar', nep_label: 'काग तिहार', day: 1 },
     { eng_label: 'Kukur Tihar', nep_label: 'कुकुर तिहार', day: 2 },
@@ -9,10 +10,11 @@ export const TiharDates = {
     { eng_label: 'Mha Puja', nep_label: 'म्हपूजा', day: 4 },
     { eng_label: 'Bhai Tika', nep_label: 'भाइटीका', day: 5 },
   ],
-};
+}
 
 export const DashainDates = {
   start_date: '2023-10-15 00:00:00',
+  end_date: '2023-10-28 00:00:00',
   dates: [
     { eng_label: 'Ghatasthapana', nep_label: 'घटस्थापना', day: 1 },
     { eng_label: 'Fulpati', nep_label: 'फूलपाती', day: 7 },
@@ -22,14 +24,14 @@ export const DashainDates = {
     { eng_label: 'Papakunsa Ekadashi', nep_label: 'पापांकुशा एकादशी', day: 11 },
     { eng_label: 'Kojagrat Poornima', nep_label: 'कोजाग्रत पूर्णिमा', day: 14 },
   ],
-};
+}
 
 export const DashainMessages = {
   nepEffect: 'विजया दशमी एवम दिपावली २०८० को हार्दिक मंङगलमय शुभकामना!!!',
   engEffect: 'Wish you a very Happy Dashain and Tihar!!!',
-};
+}
 
 export const TiharMessage = {
   nepEffect: 'शुभ दिपावलीको हार्दिक मंङगलमय शुभकामना!!!',
   engEffect: 'Happy Deepawali!!!',
-};
+}
