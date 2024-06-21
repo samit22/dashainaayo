@@ -1,0 +1,62 @@
+.no-data-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    background: linear-gradient(135deg, #f3ec78, #af4261);
+    color: #ffffff;
+    font-family: 'Arial', sans-serif;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .no-data-image {
+    width: 200px;
+    margin-bottom: 20px;
+    animation: bounce 2s infinite;
+  }
+
+  .no-data-title {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  }
+
+  .no-data-message {
+    font-size: 1.5rem;
+    max-width: 400px;
+    margin-bottom: 20px;
+  }
+
+  @keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+      transform: translateY(0);
+    }
+    40% {
+      transform: translateY(-30px);
+    }
+    60% {
+      transform: translateY(-15px);
+    }
+  }
+
+  .sparkles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 50%;
+    background: url('sparkle.png') repeat;
+    animation: sparkle 4s linear infinite;
+  }
+
+  @keyframes sparkle {
+    from {
+      background-position: 0 0;
+    }
+    to {
+      background-position: 100% 100%;
+    }
+  }
