@@ -42,21 +42,3 @@
     }
   }
 
-  .sparkles {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 50%;
-    height: 50%;
-    background: url('sparkle.png') repeat;
-    animation: sparkle 4s linear infinite;
-  }
-
-  @keyframes sparkle {
-    from {
-      background-position: 0 0;
-    }
-    to {
-      background-position: 100% 100%;
-    }
-  }
