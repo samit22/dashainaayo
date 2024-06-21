@@ -4,7 +4,7 @@ import ReactTypingEffect from 'react-typing-effect'
 
 const Header = ({ isDashain, children }) => {
   const year = new Date().getFullYear()
-  const nepaliYear = '२०८०'
+  const nepaliYear = '२०८१'
   const greetingText = isDashain
     ? [`बडा दशैँ ${nepaliYear}`, `Dashain ${year}`]
     : [`तिहार ${nepaliYear}`, `Tihar ${year}`]
