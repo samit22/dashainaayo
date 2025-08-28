@@ -1,13 +1,13 @@
 import React from 'react'
 import { Grid, Typography } from '@mui/material'
 import ReactTypingEffect from 'react-typing-effect'
+import  { NepaliYear } from '../../constants/dates'
 
 const Header = ({ isDashain, children }) => {
   const year = new Date().getFullYear()
-  const nepaliYear = '२०८१'
   const greetingText = isDashain
-    ? [`बडा दशैँ ${nepaliYear}`, `Dashain ${year}`]
-    : [`तिहार ${nepaliYear}`, `Tihar ${year}`]
+    ? [`बडा दशैँ ${NepaliYear}`, `Dashain ${year}`]
+    : [`तिहार ${NepaliYear}`, `Tihar ${year}`]
 
   return (
     <React.Fragment>
