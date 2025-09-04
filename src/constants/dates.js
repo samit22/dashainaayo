@@ -14,8 +14,8 @@ export const TiharDates = {
 }
 
 export const DashainDates = {
-  start_date: '2025-09-19 00:00:00',
-  end_date: '2025-19-24 00:00:00',
+  start_date: '2025-09-22 00:00:00',
+  end_date: '2025-10-06 00:00:00',
   dates: [
     { eng_label: 'Ghatasthapana', nep_label: 'घटस्थापना', day: 1 },
     { eng_label: 'Fulpati', nep_label: 'फूलपाती', day: 7 },
