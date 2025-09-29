@@ -18,12 +18,12 @@ export const DashainDates = {
   end_date: '2025-10-06 00:00:00',
   dates: [
     { eng_label: 'Ghatasthapana', nep_label: 'घटस्थापना', day: 1 },
-    { eng_label: 'Fulpati', nep_label: 'फूलपाती', day: 7 },
-    { eng_label: 'Maha astami', nep_label: 'महाअष्टमी', day: 8 },
-    { eng_label: 'Maha Nawami', nep_label: 'महानवमी', day: 9 },
-    { eng_label: 'Bijaya Dashami', nep_label: 'विजया दशमी', day: 10 },
-    { eng_label: 'Papakunsa Ekadashi', nep_label: 'पापांकुशा एकादशी', day: 11 },
-    { eng_label: 'Kojagrat Poornima', nep_label: 'कोजाग्रत पूर्णिमा', day: 14 },
+    { eng_label: 'Fulpati', nep_label: 'फूलपाती', day: 8 },
+    { eng_label: 'Maha astami', nep_label: 'महाअष्टमी', day: 9 },
+    { eng_label: 'Maha Nawami', nep_label: 'महानवमी', day: 10 },
+    { eng_label: 'Bijaya Dashami', nep_label: 'विजया दशमी', day: 11 },
+    { eng_label: 'Papakunsa Ekadashi', nep_label: 'पापांकुशा एकादशी', day: 12 },
+    { eng_label: 'Kojagrat Poornima', nep_label: 'कोजाग्रत पूर्णिमा', day: 15 },
   ],
 }
 
