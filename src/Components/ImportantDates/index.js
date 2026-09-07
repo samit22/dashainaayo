@@ -1,6 +1,6 @@
 import React from 'react'
 import { DashainDates, TiharDates, columns } from '../../constants'
-import { addHours, findReadableTime } from '../../utils'
+import { addHours, findDaysUntil } from '../../utils'
 import { Box, Typography } from '@mui/material'
 import { DataGrid } from '@mui/x-data-grid'
 
@@ -15,7 +15,7 @@ const ImportantDates = ({ isDashain }) => {
       nep_label: d.nep_label,
       eng_label: d.eng_label,
       label: `${d.nep_label}(${d.eng_label})`,
-      in: `${findReadableTime(day)}`,
+      in: findDaysUntil(day),
     }
   })
   return (
