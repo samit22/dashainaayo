@@ -10,18 +10,23 @@ export default function Router() {
   const hasDashainEnded = today > new Date(DashainDates.end_date)
   const hasTiharEnded = today > new Date(TiharDates.end_date)
 
-  function show()  {
-    if (!hasDashainEnded) {return <Dashain />}
-    if (!hasTiharEnded) {return <Tihar />}
-    return  <NoData/>
+  function show() {
+    if (!hasDashainEnded) {
+      return <Dashain />
+    }
+    if (!hasTiharEnded) {
+      return <Tihar />
+    }
+    return <NoData />
   }
 
   return (
     <Routes>
-      <Route path="/" exact element={show()}/>
-      <Route path="/dashain" exact element={<Dashain />} />
-      <Route path="/tihar" exact element={<Tihar />} />
-      <Route path="/no-data" exact element={<NoData />} />
+      <Route path="/" element={show()} />
+      <Route path="/dashain" element={<Dashain />} />
+      <Route path="/tihar" element={<Tihar />} />
+      <Route path="/no-data" element={<NoData />} />
+      <Route path="*" element={show()} />
     </Routes>
   )
 }
