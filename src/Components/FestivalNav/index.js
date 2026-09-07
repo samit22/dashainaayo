@@ -7,21 +7,22 @@ const linkSx = isActive => ({
   textTransform: 'none',
   fontWeight: isActive ? 700 : 500,
   fontSize: '0.95rem',
-  color: isActive ? '#d31121' : '#333',
+  color: isActive ? '#d31121' : '#222',
   borderBottom: isActive ? '2px solid #d31121' : '2px solid transparent',
   borderRadius: 0,
   minWidth: 'auto',
   px: 1.25,
   py: 0.5,
-  backgroundColor: 'rgba(255, 255, 255, 0.85)',
+  backgroundColor: 'transparent',
   '&:hover': {
-    backgroundColor: 'rgba(255, 255, 255, 0.95)',
+    backgroundColor: 'transparent',
+    opacity: 0.85,
   },
 })
 
 /**
  * Festival switcher fixed top-right. While Dashain is still ongoing, expose a
- * Tihar link so /tihar is reachable before the home route auto-switches.
+ * Tihar link so /tihar is readable before the home route auto-switches.
  */
 const FestivalNav = () => {
   const location = useLocation()
@@ -51,10 +52,9 @@ const FestivalNav = () => {
         zIndex: 1300,
         display: 'flex',
         gap: 1,
-        p: 0.5,
-        borderRadius: 1,
-        boxShadow: '0 2px 8px rgba(0,0,0,0.12)',
-        backgroundColor: 'rgba(255, 255, 255, 0.9)',
+        p: 0,
+        backgroundColor: 'transparent',
+        boxShadow: 'none',
       }}
     >
       {showDashainLink && (
