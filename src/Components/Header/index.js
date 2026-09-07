@@ -1,7 +1,8 @@
 import React from 'react'
 import { Grid, Typography } from '@mui/material'
 import ReactTypingEffect from 'react-typing-effect'
-import  { NepaliYear } from '../../constants/dates'
+import { NepaliYear } from '../../constants/dates'
+import FestivalNav from '../FestivalNav'
 
 const Header = ({ isDashain, children }) => {
   const year = new Date().getFullYear()
@@ -20,6 +21,7 @@ const Header = ({ isDashain, children }) => {
           textAlign: 'center',
         }}
       >
+        <FestivalNav />
         <Typography
           component={'div'}
           sx={{
