@@ -26,9 +26,29 @@ export const convertNepaliDigit = num => {
   return convertArray.join('')
 }
 
-export const findReadableTime = date => {
-  return moment(date).fromNow()
+/** Whole calendar days until (or since) a date — for Important Dates countdown. */
+export const findDaysUntil = date => {
+  const target = moment(date).startOf('day')
+  const today = moment().startOf('day')
+  const days = target.diff(today, 'days')
+
+  if (days > 1) {
+    return `in ${days} days`
+  }
+  if (days === 1) {
+    return 'in 1 day'
+  }
+  if (days === 0) {
+    return 'today'
+  }
+  if (days === -1) {
+    return '1 day ago'
+  }
+  return `${Math.abs(days)} days ago`
 }
+
+/** @deprecated Prefer findDaysUntil for Important Dates; kept for any legacy use */
+export const findReadableTime = date => findDaysUntil(date)
 
 export const addHours = (date, hours) => {
   const added = moment(date).add(hours, 'hours').format('YYYY-MM-DD HH:mm:ss')
