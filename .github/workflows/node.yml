@@ -38,6 +38,11 @@ jobs:
       - name: Verify npm cache
         run: npm cache verify
 
+      - name: Test
+        run: npm test -- --watchAll=false
+        env:
+          CI: true
+
       - name: Build
         run: npm run build
 
