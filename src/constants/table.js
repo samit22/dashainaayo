@@ -8,7 +8,7 @@ export const columns = [
 
   {
     field: 'in',
-    headerName: 'In',
+    headerName: 'In (days)',
     width: 120,
   },
 ]
