@@ -6,17 +6,22 @@ import { DashainDates, TiharDates } from '../../constants'
 const linkSx = isActive => ({
   textTransform: 'none',
   fontWeight: isActive ? 700 : 500,
-  fontSize: '1.1rem',
+  fontSize: '0.95rem',
   color: isActive ? '#d31121' : '#333',
   borderBottom: isActive ? '2px solid #d31121' : '2px solid transparent',
   borderRadius: 0,
   minWidth: 'auto',
-  px: 1.5,
+  px: 1.25,
+  py: 0.5,
+  backgroundColor: 'rgba(255, 255, 255, 0.85)',
+  '&:hover': {
+    backgroundColor: 'rgba(255, 255, 255, 0.95)',
+  },
 })
 
 /**
- * Festival switcher. While Dashain is still ongoing, expose a Tihar link
- * so /tihar is reachable before the home route auto-switches.
+ * Festival switcher fixed top-right. While Dashain is still ongoing, expose a
+ * Tihar link so /tihar is reachable before the home route auto-switches.
  */
 const FestivalNav = () => {
   const location = useLocation()
@@ -24,7 +29,6 @@ const FestivalNav = () => {
   const hasDashainEnded = today > new Date(DashainDates.end_date)
   const hasTiharEnded = today > new Date(TiharDates.end_date)
 
-  // Nav for Tihar while Dashain dates are not crossed
   const showTiharLink = !hasDashainEnded && !hasTiharEnded
   const showDashainLink = !hasDashainEnded || (hasDashainEnded && !hasTiharEnded)
 
@@ -41,11 +45,16 @@ const FestivalNav = () => {
       component="nav"
       aria-label="Festival navigation"
       sx={{
+        position: 'fixed',
+        top: 16,
+        right: 16,
+        zIndex: 1300,
         display: 'flex',
-        justifyContent: 'center',
-        gap: 2,
-        mb: 2,
-        mt: 1,
+        gap: 1,
+        p: 0.5,
+        borderRadius: 1,
+        boxShadow: '0 2px 8px rgba(0,0,0,0.12)',
+        backgroundColor: 'rgba(255, 255, 255, 0.9)',
       }}
     >
       {showDashainLink && (
